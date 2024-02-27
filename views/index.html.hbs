@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="/imgs/favicon.png"/>
+  <title>Your website title</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  {{#if isProduction}}
+    <link rel="stylesheet" href="/{{manifest.[src/main.js].css}}"/>
+  {{/if}}
+</head>
+<body>
+<div id="app" class="w-screen"><!--ssr--></div>
+{{#if isProduction}}
+  <script type="module" src="/{{manifest.[src/main.js].file }}"></script>
+{{else}}
+  <script type="module" src="http://localhost:5173/@vite/client"></script>
+  <script type="module" src="http://localhost:5173/src/main.js"></script>
+{{/if}}
+</body>
+</html>
